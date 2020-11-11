@@ -51,7 +51,7 @@ class RestaurantsController < ApplicationController
   end
   
   def chef
-    @chef = @restaurant.chef
+    @chef = @restaurant.chef_name
   end
 
   private
