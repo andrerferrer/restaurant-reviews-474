@@ -15,5 +15,25 @@
   <%= @restaurant.stars %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Check the Chef', chef_restaurant_path(@restaurant.id)  %>
+<%# <%= link_to 'Check the Chef', chef_restaurant_path(@restaurant)  %>
+<%# <%= link_to 'Check the Chef', chef_restaurant_path  %>
+
+<%= link_to 'Add a Review', new_restaurant_review_path(@restaurant.id) %>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant.id) %> |
 <%= link_to 'Back', restaurants_path %>
+
+<h2>Reviews</h2>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <%= review.content %>
+      <%= link_to '💩', 
+          review_path(review.id), 
+          method: :delete, 
+          data: { confirm: 'Are you sure?' }  %>
+    </li>
+  <% end %>
+</ul>
